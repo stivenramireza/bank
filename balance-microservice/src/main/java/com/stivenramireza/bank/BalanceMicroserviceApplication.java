@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BalanceServiceApplication {
+public class BalanceMicroserviceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BalanceServiceApplication.class, args);
+		SpringApplication.run(BalanceMicroserviceApplication.class, args);
 	}
 
 }
