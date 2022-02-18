@@ -75,6 +75,7 @@ public class Customer implements java.io.Serializable {
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
 	private List<Account> accounts = new ArrayList<>();
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
 	private List<RegisteredAccount> registeredAccounts = new ArrayList<>();
 
