@@ -28,7 +28,7 @@ public class CustomerController {
 
 	
 	@GetMapping
-	public ResponseEntity<?> findAll() throws Exception {
+	public ResponseEntity<List<CustomerDTO>> findAll() throws Exception {
 		List<Customer> foundCustomers = customerService.findAll();
 		List<CustomerDTO> customers = customerMapper.listCustomerToListCustomerDTO(foundCustomers);
 		return ResponseEntity.ok(customers);
