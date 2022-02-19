@@ -53,7 +53,7 @@ public class CustomerController {
 	}
 	
 	@PutMapping
-	public CustomerDTO update(@RequestBody CustomerDTO customerDTO) throws Exception {
+	public CustomerDTO update(@Valid @RequestBody CustomerDTO customerDTO) throws Exception {
 		Customer customer = customerMapper.customerDTOToCustomer(customerDTO);
 		customer = customerService.update(customer);
 		customerDTO = customerMapper.customerToCustomerDTO(customer);
