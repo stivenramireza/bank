@@ -2,10 +2,14 @@ package com.stivenramireza.bank.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,11 +45,24 @@ public class CustomerController {
 	}
 	
 	@PostMapping
-	public CustomerDTO save(@RequestBody CustomerDTO customerDTO) throws Exception {
+	public CustomerDTO save(@Valid @RequestBody CustomerDTO customerDTO) throws Exception {
 		Customer customer = customerMapper.customerDTOToCustomer(customerDTO);
 		customer = customerService.save(customer);
 		customerDTO = customerMapper.customerToCustomerDTO(customer);
 		return customerDTO;
+	}
+	
+	@PutMapping
+	public CustomerDTO update(@RequestBody CustomerDTO customerDTO) throws Exception {
+		Customer customer = customerMapper.customerDTOToCustomer(customerDTO);
+		customer = customerService.update(customer);
+		customerDTO = customerMapper.customerToCustomerDTO(customer);
+		return customerDTO;
+	}
+	
+	@DeleteMapping("/{id}")
+	public void deleteById(@PathVariable("id") Integer id) throws Exception {
+		customerService.deleteById(id);
 	}
 
 }
