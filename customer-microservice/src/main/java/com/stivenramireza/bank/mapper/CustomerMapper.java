@@ -11,14 +11,14 @@ import com.stivenramireza.bank.dto.CustomerDTO;
 @Mapper
 public interface CustomerMapper {
 	
-	@Mapping(source = "documentType.dotyId", target = "dotyId_DocumentType")
+	@Mapping(source = "documentType.dotyId", target = "dotyId")
 	public CustomerDTO customerToCustomerDTO(Customer customer);
-
-	@Mapping(source = "dotyId_DocumentType", target = "documentType.dotyId")
+	
+	@Mapping(source = "dotyId", target = "documentType.dotyId")
 	public Customer customerDTOToCustomer(CustomerDTO customerDTO);
-
-	public List<CustomerDTO> listCustomerToListCustomerDTO(List<Customer> customers);
-
-	public List<Customer> listCustomerDTOToListCustomer(List<CustomerDTO> customerDTOs);
-
+	
+	public List<CustomerDTO> customerListToCustomerDTOList(List<Customer> customers);
+	
+	public List<Customer> customerDTOListToCustomerList(List<CustomerDTO> customerDTOs);
+	
 }

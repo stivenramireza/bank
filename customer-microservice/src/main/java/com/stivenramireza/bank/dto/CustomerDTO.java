@@ -1,8 +1,6 @@
 package com.stivenramireza.bank.dto;
 
-import java.io.Serializable;
-
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -13,38 +11,37 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerDTO implements Serializable {
+public class CustomerDTO {
 
-	private static final long serialVersionUID = 1L;
-	
-	@NotNull
-	@NotEmpty
-	@Size(max = 255)
-	private String address;
-	
 	@NotNull
 	private Integer custId;
+	
+	@NotNull
+	private Integer dotyId;
+	
+	@NotNull
+	@Size(min = 3, max = 100)
+	private String address;
 
 	@NotNull
-	@NotEmpty
-	@Size(max = 255)
+	@Email
 	private String email;
-	
+
 	@NotNull
-	@NotEmpty
-	@Size(max = 255)
+	@Size(min = 1,max = 1)
 	private String enable;
-	
+
 	@NotNull
-	@NotEmpty
-	@Size(max = 255)
+	@Size(min = 1,max = 100)
 	private String name;
+
+	@NotNull
+	@Size(min = 1,max = 100)
+	private String phone;
 	
 	@NotNull
-	@NotEmpty
-	@Size(max = 255)
-	private String phone;
+	@Size(min = 1,max = 100)
 	private String token;
-	private Integer dotyId_DocumentType;
 	
 }
+

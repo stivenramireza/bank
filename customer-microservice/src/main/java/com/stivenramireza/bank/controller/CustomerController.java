@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stivenramireza.bank.domain.Customer;
+import com.stivenramireza.bank.dto.CustomerDTO;
+import com.stivenramireza.bank.mapper.CustomerMapper;
 import com.stivenramireza.bank.service.CustomerService;
 
 @RestController
@@ -15,11 +17,16 @@ import com.stivenramireza.bank.service.CustomerService;
 public class CustomerController {
 	
 	@Autowired
-	private CustomerService customerService;
+	CustomerService customerService;
+	
+	@Autowired
+	CustomerMapper customerMapper;
 
 	@GetMapping
-	public List<Customer> findAll() throws Exception {
-		return null;
+	public List<CustomerDTO> findAll() throws Exception {
+		List<Customer> customers = customerService.findAll();
+		List<CustomerDTO> customerDTOs = customerMapper.customerListToCustomerDTOList(customers);
+		return customerDTOs;
 	}
 
 }
