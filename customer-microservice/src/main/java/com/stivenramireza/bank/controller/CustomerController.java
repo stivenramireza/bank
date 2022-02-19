@@ -29,7 +29,8 @@ public class CustomerController {
 	public CustomerDTO findById(@PathVariable("id") Integer id) throws Exception {
 		Boolean existsCustomer = customerService.findById(id).isPresent();
 		Customer customer = existsCustomer ? customerService.findById(id).get() : null;
-		return customerMapper.customerToCustomerDTO(customer);
+		CustomerDTO customerDTO = customerMapper.customerToCustomerDTO(customer);
+		return customerDTO;
 	}
 
 	@GetMapping
