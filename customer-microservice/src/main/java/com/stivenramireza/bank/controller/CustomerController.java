@@ -64,5 +64,11 @@ public class CustomerController {
 	public void deleteById(@PathVariable("id") Integer id) throws Exception {
 		customerService.deleteById(id);
 	}
+	
+	@GetMapping("/count")
+	public Long count() {
+		Long counter = customerService.count();
+		return counter;
+	}
 
 }
